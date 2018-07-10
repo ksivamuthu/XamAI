@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage  xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              Title="" 
+              BackgroundColor="#0f293b"
+              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+              ios:Page.UseSafeArea="false" x:Class="XamAI.Pages.EmotionGifPage" xmlns:behaviors="clr-namespace:XamAI.Behaviors" xmlns:converters="clr-namespace:XamAI.Converters" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:controls="clr-namespace:XamAI.Controls" xmlns:effects="clr-namespace:XamAI.Behaviors">
+    <ContentPage.Resources>
+        <converters:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />  
+        <converters:NegateBooleanConverter x:Key="NegateBooleanConverter"/>
+          <Style x:Key="flex" TargetType="FlexLayout">
+            <Setter Property="Direction" Value="Row"/>
+            <Setter Property="Wrap" Value="Wrap"/>
+            <Setter Property="AlignItems" Value="Stretch"/>
+            <Setter Property="AlignContent" Value="Start"/>
+        </Style>      
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView> 
+            <ScrollView.Effects>
+                 <effects:ContentInsetAdjustmentBehaviorEffect/>
+            </ScrollView.Effects>
+            <StackLayout Orientation="Vertical">
+               <StackLayout>
+                    <Image Aspect="AspectFill" HorizontalOptions="Fill" HeightRequest="200" Source="emotionpage.png"></Image>  
+                    <Label Margin="0,10,0,10" FontSize="25" HorizontalTextAlignment="Center" TextColor="White" FontAttributes="Bold" Text="Face Emotion GIF Search"></Label>  
+                    <Label Margin="5" FontSize="16" HorizontalTextAlignment="Center" TextColor="White" FontAttributes="Bold" Text="Search GIFS from Giphy using your facial expressions"></Label>                             
+               </StackLayout>
+                <StackLayout Margin="10">
+                 <Button Margin="0,20,0,10" BackgroundColor="Teal" TextColor="White" Text="Take Photo" Command="{Binding TakePhotoCommand}"></Button>                   
+
+                 <Grid RowSpacing="0" ColumnSpacing="1" VerticalOptions="Fill" HorizontalOptions="Fill">
+                    <Grid.RowDefinitions>
+                        <RowDefinition>200</RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition>*</ColumnDefinition>
+                        <ColumnDefinition>*</ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Row="0" Grid.Column="0">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Handle_Tapped"></TapGestureRecognizer>                                   
+                         </StackLayout.GestureRecognizers> 
+                        <Label Text="Face" TextColor="White" HorizontalOptions="Center"></Label>
+                        <Image BackgroundColor="LightGray" HeightRequest="200" HorizontalOptions="Fill"  Source="{Binding PersonImageSource}">                              
+                        </Image>
+                        <Label Text="{Binding KeyWord}" TextColor="White" HorizontalOptions="Center"></Label>    
+                     </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="1">
+                        <Label Text="Random GIF" TextColor="White" HorizontalOptions="Center"></Label>
+                        <ffimageloading:CachedImage HeightRequest="200" LoadingPriority="Highest" HorizontalOptions="Fill" BackgroundColor="LightSkyBlue" Source="{Binding RandomGif.Images.Original.Url}">                                 
+                        </ffimageloading:CachedImage>
+                        <Label Text="{Binding RandomGif.Caption}" TextColor="White" HorizontalOptions="Center"></Label>    
+                     </StackLayout>                       
+                </Grid>                 
+
+                <StackLayout Margin="0" Padding="0" IsVisible="{Binding IsGIFLoaded}">
+                    <Button  Margin="0,20,0,10" BackgroundColor="Teal" TextColor="White" Text="{Binding ToggleMoreText}" Command="{Binding ShowMoreCommand}"></Button>                       
+                    
+                     <controls:GalleryView IsVisible="{Binding ShowMoreGifs}" JustifyContent="SpaceEvenly" StyleClass="giflistview" Style="{StaticResource flex}" ItemsSource="{Binding EmotionGifs}">
+                        <controls:GalleryView.ItemTemplate>   
+                            <DataTemplate>
+                                 <ffimageloading:CachedImage WidthRequest="200" HeightRequest="200" Aspect="AspectFill" StyleClass="photo" LoadingPriority="Normal" HorizontalOptions="Fill" Source="{Binding Images.Original.Url}"></ffimageloading:CachedImage>                            
+                            </DataTemplate>
+                        </controls:GalleryView.ItemTemplate>
+                    </controls:GalleryView>                
+                 </StackLayout>
+                     </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

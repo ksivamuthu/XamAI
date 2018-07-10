@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage Title=""             
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="false"
+             BackgroundColor="#0f293b"
+             xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XamAI.Pages.CustomVisionPage" xmlns:converters="clr-namespace:XamAI.Converters" xmlns:effects="clr-namespace:XamAI.Behaviors">
+   <ContentPage.Resources>
+        <converters:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />  
+        <converters:NegateBooleanConverter x:Key="NegateBooleanConverter"/>     
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView> 
+             <ScrollView.Effects>
+                 <effects:ContentInsetAdjustmentBehaviorEffect/>
+            </ScrollView.Effects>
+            <StackLayout Orientation="Vertical">
+               <StackLayout>
+                    <Image Aspect="AspectFill" HorizontalOptions="Fill" HeightRequest="200" Source="customvision.jpg"></Image>  
+                    <Label Margin="0,10,0,10" FontSize="25" HorizontalTextAlignment="Center" TextColor="White" FontAttributes="Bold" Text="Buckled up or Not"></Label>  
+                    <Label Margin="5" FontSize="16" HorizontalTextAlignment="Center" TextColor="White" FontAttributes="Bold" Text="Using labeled images to teach Custom Vision Service to predict whether driver buckled up or not"></Label>                             
+               </StackLayout>
+
+                <StackLayout Margin="10">
+                <Button Margin="0,10,0,10" BackgroundColor="Teal" TextColor="White" Text="Take Photo" Command="{Binding TakePhotoCommand}"></Button>                   
+
+                <Image Aspect="AspectFit" BackgroundColor="Transparent" HeightRequest="200" HorizontalOptions="Fill"  Source="{Binding ImageSource}"></Image>
+                <Label HorizontalTextAlignment="Center" IsVisible="{Binding ResultAvailable}" FontSize="16" TextColor="White" FontAttributes="Bold" Text="{Binding Classification}"></Label>                    
+              </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

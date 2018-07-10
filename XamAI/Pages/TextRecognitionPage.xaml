@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage  Title="" 
+              BackgroundColor="#0f293b"
+              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+              ios:Page.UseSafeArea="false" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XamAI.Pages.TextRecognitionPage" xmlns:behaviors="clr-namespace:XamAI.Behaviors" xmlns:converters="clr-namespace:XamAI.Converters" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:controls="clr-namespace:XamAI.Controls" xmlns:effects="clr-namespace:XamAI.Behaviors">
+    <ContentPage.Resources>
+        <converters:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />  
+        <converters:NegateBooleanConverter x:Key="NegateBooleanConverter"/>     
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView> 
+              <ScrollView.Effects>
+                 <effects:ContentInsetAdjustmentBehaviorEffect/>
+            </ScrollView.Effects>
+            <StackLayout>
+                <StackLayout>
+                    <Image Aspect="AspectFill" HorizontalOptions="Fill" HeightRequest="200" Source="textanalytics.jpg"></Image>  
+                    <Label Margin="0,10,0,10" FontSize="25" HorizontalTextAlignment="Center" TextColor="White" FontAttributes="Bold" Text="Text Analytics"></Label>  
+                    <Label Margin="5" FontSize="16" HorizontalTextAlignment="Center" TextColor="White" FontAttributes="Bold" Text="Identify the language, sentiment, key phrases, and entities of your text"></Label>                             
+               </StackLayout>
+                <StackLayout Margin="10">
+                
+                 <Button Margin="0,10,0,10" BackgroundColor="Teal" TextColor="White" Text="Take Photo" Command="{Binding TakePhotoCommand}"></Button>                   
+
+                <Image Aspect="AspectFit" BackgroundColor="LightGray" HeightRequest="200" HorizontalOptions="Fill"  Source="{Binding ImageSource}"></Image>
+                 <Frame IsVisible="{Binding ResultAvailable}">
+                    <Label FontSize="15" Text="{Binding RecognizedText}"></Label>                    
+                 </Frame>
+                <Frame>
+                    <StackLayout Spacing="20">
+                        <Label TextColor="Teal" FontAttributes="Bold" FontSize="16" Text="Language:"></Label>
+                        <Label FontSize="14" Text="{Binding Language}"></Label>
+                        <BoxView HeightRequest="1" BackgroundColor="Gray"></BoxView>
+                        <Label TextColor="Teal" FontAttributes="Bold" FontSize="16" Text="Entities:"></Label>
+                        <Label FontSize="14" Text="{Binding Entities}"></Label>
+                        <BoxView HeightRequest="1" BackgroundColor="Gray"></BoxView>
+                        <Label TextColor="Teal" FontAttributes="Bold" FontSize="16" Text="Sentiment:"></Label>
+                        <Label FontSize="14" Text="{Binding Sentiment}"></Label>
+                    </StackLayout>
+                </Frame>                
+            </StackLayout>
+                </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

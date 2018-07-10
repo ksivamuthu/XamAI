@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage Title="" x:Name="Main" BackgroundColor="#0f293b" 
+             xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="false"
+              NavigationPage.HasBackButton="false"
+             x:Class="XamAI.Pages.MainPage" xmlns:behaviors="clr-namespace:XamAI.Behaviors" 
+            xmlns:converters="clr-namespace:XamAI.Converters" xmlns:xfparallax="clr-namespace:DevsDNA.XFParallax;assembly=DevsDNA.XFParallax">
+    <ContentPage.Resources>
+        <converters:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+          <ListView BackgroundColor="Transparent" Margin="0" HasUnevenRows="true" ItemsSource="{Binding CognitiveServices, Mode=OneWay}"
+                    SelectionMode="None" SeparatorVisibility="None">
+            <ListView.Header>
+               <StackLayout>
+                    <Image Aspect="AspectFill" HorizontalOptions="Fill" HeightRequest="200" Source="mainlogo.jpg"></Image>  
+                    <Label Margin="0,10,0,10" FontSize="25" HorizontalTextAlignment="Center" TextColor="White" FontAttributes="Bold" Text="Adding AI to App"></Label>  
+                    <Label Margin="5" FontSize="16" HorizontalTextAlignment="Center" TextColor="White" FontAttributes="Bold" Text="Xamarin and Azure Cognitive Services"></Label>                             
+               </StackLayout> 
+            </ListView.Header>    
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.GestureRecognizers>
+                                 <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Path=BindingContext.CognitiveServiceSelected, Source={x:Reference Main}}"/>
+                            </Grid.GestureRecognizers>
+                            <StackLayout Margin="20">
+                                <Label FontSize="20" FontAttributes="Bold" TextColor="#2abbd3" Text="{Binding Name}" />
+                                <Label FontSize="15" LineBreakMode="WordWrap" Margin="0,0,10,0" FontAttributes="Bold" TextColor="WhiteSmoke" Text="{Binding Description}" />
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+             </ListView.ItemTemplate>
+          </ListView>
+    </ContentPage.Content>
+</ContentPage>

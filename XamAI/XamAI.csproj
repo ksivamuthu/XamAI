@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.583944" />
+    <PackageReference Include="PropertyChanged.Fody" Version="2.5.8" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.1" />
+    <PackageReference Include="Microsoft.Azure.CognitiveServices.Vision.ComputerVision" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Azure.CognitiveServices.Vision.Face" Version="1.0.2-preview" />
+    <PackageReference Include="modernhttpclient" Version="2.4.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.3.840" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.3.840" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.3.840" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.3.840" />
+    <PackageReference Include="Microsoft.Azure.CognitiveServices.Language.TextAnalytics" Version="1.1.0-preview" />
+    <PackageReference Include="Xam.Plugins.OnDeviceCustomVision" Version="1.0.0" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\" />
+    <Folder Include="ViewModel\" />
+    <Folder Include="Behaviors\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Services\" />
+    <Folder Include="Model\" />
+    <Folder Include="Styles\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Services\Contracts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Services\Navigation\NavigationService.cs" />
+    <Compile Remove="Services\Navigation\INavigationService.cs" />
+    <Compile Remove="Pages\ComputerVisionPage.cs" />
+    <Compile Remove="Pages\CustomVisionPage.xaml %28copy%29.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Styles\EmotionGifPage.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Pages\CustomVisionPage %28copy%29.xaml" />
+  </ItemGroup>
+</Project>

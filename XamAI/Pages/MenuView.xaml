@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage BackgroundColor="#0f293b" Icon="menu.png" Title="Master" xmlns="http://xamarin.com/schemas/2014/forms" x:Name="Menu" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XamAI.Pages.MenuView">
+
+  <StackLayout>
+    <BoxView HeightRequest="100"             
+             BackgroundColor="Transparent"/>  
+    <ListView ItemsSource="{Binding MenuItems}" BackgroundColor="Transparent" SeparatorColor="Transparent" SeparatorVisibility="None">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                     <StackLayout Padding="50,20,0,10" HorizontalOptions="FillAndExpand">
+                          <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Path=BindingContext.MenuItemSelected, Source={x:Reference Menu}}"/>                            
+                            </StackLayout.GestureRecognizers>     
+                          <Label VerticalOptions="FillAndExpand" 
+                                VerticalTextAlignment="Center" 
+                                Text="{Binding Title}" 
+                                TextColor="White"
+                                FontSize="18"/>
+                    </StackLayout>    
+                 </ViewCell>
+            </DataTemplate>
+         </ListView.ItemTemplate>    
+    </ListView>
+  </StackLayout>
+</ContentPage>

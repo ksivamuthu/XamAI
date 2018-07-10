@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage NavigationPage.HasBackButton="false" BackgroundColor="#0f293b" Title="About" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XamAI.Pages.AboutPage">
+    <ContentPage.Content>
+         <WebView Source="https://github.com/ksivamuthu/XamAI"></WebView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage  NavigationPage.HasBackButton="false" BackgroundColor="#0f293b" Title="Settings" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XamAI.Pages.SettingsPage" xmlns:XamAI="clr-namespace:XamAI">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="25" Spacing="20">
+                <StackLayout>
+                    <Label TextColor="White" Text="Face API Credentials"></Label>
+                    <Entry IsEnabled="false" Text="{Binding Source={x:Static XamAI:Settings.FaceApiCredentials}}"></Entry>
+                 </StackLayout>
+                <StackLayout>
+                    <Label TextColor="White" Text="Face API Region"></Label>
+                    <Entry IsEnabled="false" Text="{Binding Source={x:Static XamAI:Settings.FaceApiRegion}}"></Entry>
+                 </StackLayout>
+                <BoxView BackgroundColor="White" HeightRequest="2"  HorizontalOptions="Fill"></BoxView>
+                 <StackLayout>
+                    <Label TextColor="White" Text="Vision API Credentials"></Label>
+                    <Entry IsEnabled="false" Text="{Binding Source={x:Static XamAI:Settings.VisionApiCredentials}}"></Entry>
+                 </StackLayout>
+                <StackLayout>
+                    <Label TextColor="White" Text="Vision API Region"></Label>
+                    <Entry IsEnabled="false" Text="{Binding Source={x:Static XamAI:Settings.VisionApiRegion}}"></Entry>
+                 </StackLayout>
+                <BoxView BackgroundColor="White" HeightRequest="2"  HorizontalOptions="Fill"></BoxView>
+                 <StackLayout>
+                    <Label TextColor="White" Text="Text Analytics API Credentials"></Label>
+                    <Entry IsEnabled="false" Text="{Binding Source={x:Static XamAI:Settings.TextAnalyticsApiCredentials}}"></Entry>
+                 </StackLayout>
+                <StackLayout>
+                    <Label TextColor="White" Text="Text Analytics API Region"></Label>
+                    <Entry IsEnabled="false" Text="{Binding Source={x:Static XamAI:Settings.TextAnalyticsApiRegion}}"></Entry>
+                 </StackLayout>
+                <BoxView BackgroundColor="White" HeightRequest="2"  HorizontalOptions="Fill"></BoxView>
+                 <StackLayout>
+                    <Label TextColor="White" Text="Giphy API"></Label>
+                    <Entry IsEnabled="false" Text="{Binding Source={x:Static XamAI:Settings.GiphyCredentials}}"></Entry>
+                 </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
