@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository includes the demo of presentation **Adding AI to App**
+This repository includes the demo of presentation [Adding AI to App](https://speakerdeck.com/ksivamuthu/adding-ai-to-app)
 
 In this demo, we are using [Microsoft Cognitive Services API's](https://www.microsoft.com/cognitive-services/) to add artificial intelligence to a Xamarin.Forms application. 
 
